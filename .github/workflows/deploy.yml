@@ -22,8 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo owner github --> ${{ github.owner }}
-          echo owner repository --> ${{ github.repository }}
           echo The deployment environment is ${{ inputs.environment }}
           tags=$(git describe --tags --all)
           echo "$tags"
