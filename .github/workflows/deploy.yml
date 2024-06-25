@@ -27,19 +27,19 @@ jobs:
       - run: echo The ref_name is ${{ github.ref_name }}
 
       - name: Deploy environment
-        if: ${{ ! github.ref_type == tag || ! startsWith(github.ref_name, "MM") }}
+        if: github.ref_type != 'tag' || '!startsWith(github.ref_name, "MM")'
         run: echo "::error::Please select a valid tag"
 
   build-test:
     needs: get-tags
-    if: ${{ github.ref_type === tag && startsWith(github.ref_name, "MM") && inputs.environment ===  Test }}
+    if: github.ref_type === 'tag' && startsWith(github.ref_name, "MM") && inputs.environment ===  'Test'
     runs-on: ubuntu-latest
     steps:
       - run: echo npm run build:test
 
   build:
     needs: get-tags
-    if: ${{ github.ref_type === tag && startsWith(github.ref_name, "MM") && inputs.environment ===  Production }}
+    if: github.ref_type === 'tag' && startsWith(github.ref_name, "MM") && inputs.environment ===  'Production'
     runs-on: ubuntu-latest
     steps:
       - run: echo npm run build
