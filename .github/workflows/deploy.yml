@@ -21,6 +21,5 @@ jobs:
   get-tags:
     runs-on: ubuntu-latest
     steps:
-      - run: echo The deployment environment is ${{ inputs.environment }}
       - run: echo The ref is ${{ github.ref }}
           
