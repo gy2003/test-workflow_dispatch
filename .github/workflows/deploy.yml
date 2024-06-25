@@ -21,7 +21,6 @@ jobs:
   get-tags:
     runs-on: ubuntu-latest
     steps:
-      - run: echo The deployment environment is ${{ inputs.environment }}
       - uses: actions/github-script@v7.0.1
         id: set-result
         with:
@@ -34,8 +33,9 @@ jobs:
 
             const tagNames = tags.data.map(tag => tag.name);
             return tagNames.join(',');
-        - run: |
+      - run: |
           echo tags--> ${{ steps.set-result }}
           echo owner context --> ${{ context.repo.owner }}
           echo owner github --> ${{ github.owner }}
           echo owner repository --> ${{ github.repository }}
+          echo The deployment environment is ${{ inputs.environment }}
