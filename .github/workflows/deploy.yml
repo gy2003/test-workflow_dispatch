@@ -23,5 +23,4 @@ jobs:
     steps:
       - run: |
           echo The deployment environment is ${{ inputs.environment }}
-          tags=$(git describe --tags --all)
-          echo "$tags"
+          echo The ref is ${{ github.ref }}
