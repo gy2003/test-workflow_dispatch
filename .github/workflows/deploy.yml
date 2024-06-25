@@ -27,7 +27,7 @@ jobs:
       - run: echo The ref_name is ${{ github.ref_name }}
 
       - name: Deploy environment
-        if: (github.ref_type != 'tag') || (!startsWith(github.ref_name, "test@"))
+        if: (github.ref_type != 'tag') || (!startsWith(github.ref_name, 'test@'))
         run: echo "::error::Please select a valid tag"
 
   build-test:
