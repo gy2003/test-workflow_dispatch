@@ -6,12 +6,14 @@ on:
       environment:
         description: 'deployment environment'
         required: true
+        type: choice
         options:
           - Test
           - Production
       tags:
         description: 'tags'
         required: true
+        type: choice
         options: []
 
 jobs:
