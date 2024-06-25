@@ -1,0 +1,21 @@
+name: Deploy Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'deployment environment'
+        required: true
+        options:
+          - Test
+          - Production
+      tags:
+        description: 'tags'
+        required: true
+        options: []
+
+jobs:
+  deploy-local-deal-market:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo The deployment environment is ${{ inputs.environment }}
