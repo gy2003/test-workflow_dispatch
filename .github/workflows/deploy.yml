@@ -2,20 +2,20 @@ name: Deploy Test
 
 on:
   workflow_dispatch:
+    branches:
+      - main
     inputs:
       environment:
         description: 'deployment environment'
         required: true
         type: choice
-        default: ''
         options:
           - Test
           - Production
-      tags:
-        description: 'tags'
+      tag:
+        description: ''
         required: false
-        type: choice
-        options: []
+        type: string
 
 jobs:
   get-tags:
