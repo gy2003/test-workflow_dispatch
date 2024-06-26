@@ -27,7 +27,7 @@ jobs:
       - run: echo The ref_name is ${{ github.ref_name }}
 
       - name: Deploy environment
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7.0.1
         with:
           script: |
             core.setFailed('Please select a valid tag');
