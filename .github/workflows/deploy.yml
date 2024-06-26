@@ -27,8 +27,11 @@ jobs:
       - run: echo The ref_name is ${{ github.ref_name }}
 
       - name: Deploy environment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed('Please select a valid tag');
         if: (github.ref_type != 'tag') || (!startsWith(github.ref_name, 'test@'))
-        run: echo "::error::Please select a valid tag"
 
   build-test:
     needs: get-tags
@@ -41,6 +44,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
           fetch-depth: 2
+      - run: echo completed
 
   build:
     needs: get-tags
